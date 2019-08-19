@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    
+}
+
+.container {
+    background-color: aqua;
+    padding: 20px;
+    width: 600px;
+    margin: 30px auto;
+
+    display: grid;
+    /* grid-template-rows: repeat(2, 200px); */
+    grid-template-columns: repeat(6, 100px);
+    /* Auto fill crea tantos grid tracks (en este caso columnas) como se puedan crear en base al espacio disponible y el tamano que definimos en el repeat */
+    grid-template-columns: repeat(auto-fill, 100px);
+    /* Auto fit crea tantos grid tracks (en este caso columnas) como se puedan crear en base al espacio disponible y el tamano que definimos en el repeat, sin embargo en caso de haber columnas vacias automaticamente las colapsa y les da un ancho de 0, lo cual deja espacio libre */
+    grid-template-columns: repeat(auto-fill, 100px);
+    justify-content: center;
+}
+
+.auto-fill-item {
+    background-color: orangered;
+}
