@@ -1,1 +1,16 @@
 Fundamentos de Node.js
+
+Origenes y Filosofia
+
+    NodeJS es un entorno de ejecucuon de JavaScript fuera del navegador. Creado en 2009.
+
+    Es concucrrente.
+
+    Monohilo con entradas y salidas asincronas.
+
+    Un proceso por cada nucleo del procesador.
+
+    Corre sobre el motor v8. Este motor convierte JS en codigo maquina en lugar de interpretarlo en tiempo real.
+
+    Orientado a eventos, hay un bucle de eventos que se ejecuta constantemente, lo que permite orientar el codigo a una forma reactiva
+    
