@@ -13,4 +13,11 @@ Origenes y Filosofia
     Corre sobre el motor v8. Este motor convierte JS en codigo maquina en lugar de interpretarlo en tiempo real.
 
     Orientado a eventos, hay un bucle de eventos que se ejecuta constantemente, lo que permite orientar el codigo a una forma reactiva
-    
+
+EventLoop (Bucle de eventos)
+
+    Es un bucle que gestiona de forma asincrona todos los eventos de la aplicacion.
+
+    Los eventos son almacenados en el Event Queue (Cola de eventos) y se encarga de procesar las operaciones. De no ser posible ejecutar inmeadiatamente la tarea o que tarda mucho tiempo, estas tareas son enviadas al Thread Pool, donde se manejaran de forma asincrona sin bloquear el hilo principal.
+
+    El thread pool crear un hilo para cada una de las tareas que ahi este, y una vez que termine emite un evento que hara al thread pool enviar dicha tarea al EventLoop.
