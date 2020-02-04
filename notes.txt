@@ -21,3 +21,9 @@ EventLoop (Bucle de eventos)
     Los eventos son almacenados en el Event Queue (Cola de eventos) y se encarga de procesar las operaciones. De no ser posible ejecutar inmeadiatamente la tarea o que tarda mucho tiempo, estas tareas son enviadas al Thread Pool, donde se manejaran de forma asincrona sin bloquear el hilo principal.
 
     El thread pool crear un hilo para cada una de las tareas que ahi este, y una vez que termine emite un evento que hara al thread pool enviar dicha tarea al EventLoop.
+
+Monohilo: implicaciones en dise#o y seguridad
+
+    Al ejecutar un archivo js en node, se creara un proceso que se encargara de convertir el codigo js a codigo de maquina, luego hace las preparaciones para completar lo que se quiere hacer, y luego termina el proceso creado.
+
+    Los errores en js se dan en tiempo de ejecucion y no de compilacion,y se debe tener muy en cuenta eso, puesto que un error de ese tipo para el proceso. 
