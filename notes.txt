@@ -2,28 +2,109 @@ Fundamentos de Node.js
 
 Origenes y Filosofia
 
-    NodeJS es un entorno de ejecucuon de JavaScript fuera del navegador. Creado en 2009.
+  NodeJS es un entorno de ejecucuon de JavaScript fuera del navegador. Creado en 2009.
 
-    Es concucrrente.
+  Es concucrrente.
 
-    Monohilo con entradas y salidas asincronas.
+  Monohilo con entradas y salidas asincronas.
 
-    Un proceso por cada nucleo del procesador.
+  Un proceso por cada nucleo del procesador.
 
-    Corre sobre el motor v8. Este motor convierte JS en codigo maquina en lugar de interpretarlo en tiempo real.
+  Corre sobre el motor v8. Este motor convierte JS en codigo maquina en lugar de interpretarlo en tiempo real.
 
-    Orientado a eventos, hay un bucle de eventos que se ejecuta constantemente, lo que permite orientar el codigo a una forma reactiva
+  Orientado a eventos, hay un bucle de eventos que se ejecuta constantemente, lo que permite orientar el codigo a una forma reactiva
 
 EventLoop (Bucle de eventos)
 
-    Es un bucle que gestiona de forma asincrona todos los eventos de la aplicacion.
+  Es un bucle que gestiona de forma asincrona todos los eventos de la aplicacion.
 
-    Los eventos son almacenados en el Event Queue (Cola de eventos) y se encarga de procesar las operaciones. De no ser posible ejecutar inmeadiatamente la tarea o que tarda mucho tiempo, estas tareas son enviadas al Thread Pool, donde se manejaran de forma asincrona sin bloquear el hilo principal.
+  Los eventos son almacenados en el Event Queue (Cola de eventos) y se encarga de procesar las operaciones. De no ser posible ejecutar inmeadiatamente la tarea o que tarda mucho tiempo, estas tareas son enviadas al Thread Pool, donde se manejaran de forma asincrona sin bloquear el hilo principal.
 
-    El thread pool crear un hilo para cada una de las tareas que ahi este, y una vez que termine emite un evento que hara al thread pool enviar dicha tarea al EventLoop.
+  El thread pool crear un hilo para cada una de las tareas que ahi este, y una vez que termine emite un evento que hara al thread pool enviar dicha tarea al EventLoop.
 
 Monohilo: implicaciones en dise#o y seguridad
 
-    Al ejecutar un archivo js en node, se creara un proceso que se encargara de convertir el codigo js a codigo de maquina, luego hace las preparaciones para completar lo que se quiere hacer, y luego termina el proceso creado.
+  Al ejecutar un archivo js en node, se creara un proceso que se encargara de convertir el codigo js a codigo de maquina, luego hace las preparaciones para completar lo que se quiere hacer, y luego termina el proceso creado.
 
-    Los errores en js se dan en tiempo de ejecucion y no de compilacion,y se debe tener muy en cuenta eso, puesto que un error de ese tipo para el proceso. 
+  Los errores en js se dan en tiempo de ejecucion y no de compilacion,y se debe tener muy en cuenta eso, puesto que un error de ese tipo para el proceso.
+
+Variables de entorno (Investigar diferencia con windows)
+
+  Al momento de correr el archivo js se le pueden pasar variables de entorno separado por espacios:
+
+    NOMBRE=Jesus WEB=Platzi node entorno.js
+
+Herramientas de desarrollo
+
+  Nodemon y PM2 (PM2 start) para entornos de administracion de codigo, lo cual simplifica el proceso de correr cada vez los comandos.
+
+Callback Hell
+
+  Para aligerar el uso de callbacks se deberian crear funciones especificas para reducir las lineas de codigo y tambien hacer uso de la recursividad.
+
+Promesas
+
+  Las promesas son una clase global, asi que se pueden recurrir a ellas sin necesidad de importar nada.
+
+  Cualquier error en las funciones de la cadena de then dispara el catch.
+
+Globals
+
+  En los globals hay distintas cosas que pueden ser de mucha ayuda y que no requiere que se llamen cosas extras o importar nada. Por ejemplo los interval, y los timeouts. Ademas, los immediates: Schedules the "immediate" execution of the callback after I/O events' callbacks.
+
+  Ademas de eso esta el sistema de modulos mediante require/exports, el process.
+
+  Para saber la ubicacion del archivo donde se este, se puede usar __dirname.
+
+  Similarmente, esta __filename que devuelve la ruta hasta el archivo donde se este.
+
+  global.miVariable = "miValor";
+
+  console.log(miVariable);
+
+File System
+  Para acceder al file system de node, se importa const fs = require("fs");
+    readFile
+    writeFile
+    unlink
+
+Console
+  //Van a donde mismo, pero semanticamente
+  console.log()
+  console.info()
+
+  //Error
+  console.error()
+
+  //Potencial error
+  console.warn()
+
+  //Muestra en forma de tabla los arreglos de objetos
+  console.table()
+
+  //Permita agrupar una serie de logs que forman parte el mismo problema. Agrega identacion a los logs hijos
+  //Se debe indicar que el grupo termina como groupEnd;
+  console.group('Conver');
+  console.log('Hola);
+  console.log('Adios);
+  console.groupEnd('Conver);
+
+  //veces: 1
+  console.count('veces');
+
+  //veces: 2
+  console.count('veces');
+
+  //veces: 3
+  console.count('veces');
+
+  
+  console.countReset('veces');
+
+  //veces: 1
+  console.count('veces');
+
+Errores(try/catch)
+
+  Try catch permiten atajar errores y tratar con ellos sin que se detenga la ejecucion del programa.
+  Algo importante a destacar es que si se esta en una funcion fuera del event loop, como una funcion async, se debera manejar el error dentro de la funcion async, porque de lo contrario node no sabria donde paso el error en un try/catch mas afuera
