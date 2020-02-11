@@ -108,3 +108,52 @@ Errores(try/catch)
 
   Try catch permiten atajar errores y tratar con ellos sin que se detenga la ejecucion del programa.
   Algo importante a destacar es que si se esta en una funcion fuera del event loop, como una funcion async, se debera manejar el error dentro de la funcion async, porque de lo contrario node no sabria donde paso el error en un try/catch mas afuera
+
+Procesos hijos
+
+  Mediante el modulo child_process se pueden tener utilidades que permiten el manejo de procesos hijo a la par del proceso principal de node:
+
+    const { exec, spawn } = require('child_process');
+
+    //Permite ejecutar cualquier comando de la terminal
+    //Lo cual incluye poder ejecutar otros scripts en js, node u otros lenguajes de programacion
+    exec('node modulos/errores.js', (err, stdout, sterr) => {
+      if (err) {
+        console.log(err);
+        return false;
+      }
+      console.log(stdout);
+      
+    });
+
+    //Para procesos mas grandes se puede usar spawn el cual da mucha mas informacio y manejabilidad sobre el proceso
+    // let proceso = spawn('dir');
+    // console.log(proceso.connected);
+    // proceso.stdout.on('data', (dato) => {
+    //   console.log(dato.toString());
+    // })
+  
+  Modulos nativos en C++
+
+    node-gyp permite compilar modulos nativos en node.
+
+    En los archivos de c++ (.cc) se debe importar la libreria node.h para poder trabajar en c++ sobre node.
+
+    Luego de tener el archivo fuente de c++, se debe crear un archivo binding.gyp, que se encarga de enlazar el archivo c++ a node:
+
+      //binding.gyp
+      {
+        "targets": [
+          {
+            "target_name": "addon",
+            "sources": ["hola.cc"]
+          }
+        ]
+      }
+    
+    Luego desde el root donde pueda accederse el archivo binding, se hace node-gyp configure.
+
+    Una vez configurado se crea un nuevo directorio build, el cual justamente sirve para hacer el buil con node-gyp build.
+
+    Una vez que se genera el addon, se puede importar de como cualquier otro modulo de node. El nombre es el target_name que se le coloca en el archivo binding, y la ruta a el es el release que se genera luego de hacer build.
+    
