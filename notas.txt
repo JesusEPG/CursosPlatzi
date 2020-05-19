@@ -1,0 +1,22 @@
+Asincronismo en JS
+
+  Javascript es un lenguaje de programacion no bloqueante y de un solo hilo.
+
+  Memory Heap: Espacio en memoria compartido para toda la app
+
+  Pila de ejecucion (call stack): Se ponen las funciones a ejecutarse
+
+  Cola de tareas (thread pool): aqui se colocan los procesos que no pueden ser ejecutados inmediatamente, es decir, son asincronas.
+
+  No se deben tener funciones que tomen demasiado tiempo, puesto que detendria el progreso de los procesos en la pila de ejecucion.
+
+
+Principales estructuras para manejar Asincronismo en JS:
+
+  * Callbacks
+  * Promises
+  * Async/Await
+
+Callbacks
+
+  Funcion que al ser creada recibe por parametro una funcion que sera ejecuta al completar una tarea asincrona.

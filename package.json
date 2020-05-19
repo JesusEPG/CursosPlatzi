@@ -1,0 +1,29 @@
+{
+  "name": "asincronismo-js",
+  "version": "0.0.1",
+  "description": "Paquete de archivos fuentes utilizado en el curso de asincronismo de JS de Platzi",
+  "main": "index.js",
+  "scripts": {
+    "callback": "node src/callbacks/index.js",
+    "callback:challenge": "node src/callbacks/challenge.js",
+    "promise": "node src/promises/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusEPG/CursosPlatzi.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Callbacks",
+    "Promises"
+  ],
+  "author": "Jesus Pernia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesusEPG/CursosPlatzi/issues"
+  },
+  "homepage": "https://github.com/JesusEPG/CursosPlatzi#readme",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
