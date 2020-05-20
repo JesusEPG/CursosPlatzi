@@ -22,15 +22,18 @@ const fetchData = (url_api) => {
     })  
 }
 
+const handleFetch = async () => {
+    try {
+        const charactersData = await fetchData(API);
+        const character = await fetchData(API+charactersData.results[0].id);
+        const characterDimension = await fetchData(character.origin.url);
+        console.log("Termine todo");
+        console.log(charactersData.info.count)
+        console.log(character.name);
+        console.log(characterDimension.dimension);      
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-fetchData(API)
-    .then(response => {
-        return fetchData(API+response.results[0].id)
-    })
-    .then(response => {
-        return fetchData(response.origin.url)
-    })
-    .then(response => {
-        console.log("finalizado todo")
-    })
-    .catch(err => console.log(err))
+handleFetch()

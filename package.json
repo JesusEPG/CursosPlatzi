@@ -6,7 +6,10 @@
   "scripts": {
     "callback": "node src/callbacks/index.js",
     "callback:challenge": "node src/callbacks/challenge.js",
-    "promise": "node src/promises/index.js"
+    "promise": "node src/promises/index.js",
+    "async": "node src/async-await/index.js",
+    "async:challenge": "node src/async-await/challenge.js",
+    "promise:challenge": "node src/promises/challenge.js"
   },
   "repository": {
     "type": "git",

@@ -20,3 +20,9 @@ Principales estructuras para manejar Asincronismo en JS:
 Callbacks
 
   Funcion que al ser creada recibe por parametro una funcion que sera ejecuta al completar una tarea asincrona.
+
+  No se deberian encadenar mas de 3 callbacks.
+
+
+Promises
+
