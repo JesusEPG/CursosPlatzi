@@ -26,3 +26,29 @@ Callbacks
 
 Promises
 
+  Cuando se quieran encadenar varias promesas se deben retornar nuevas promesas y utilizar un catch general:
+
+    fetchData(API)
+      .then(response => {
+          return fetchData(API+response.results[0].id)
+      })
+      .then(response => {
+          return fetchData(response.origin.url)
+      })
+      .then(response => {
+          console.log("finalizado todo")
+      })
+      .catch(err => console.log(err))
+
+Async/Await
+
+  La clave de async es entender que una cosa es la funcion/operacion asincrona, y otra el manejador Asincronismo
+
+
+Ventajas y Desventajas
+
+  * Los callbacks son universales(navegadores viejos incluso) y sencillo de implementar. Estructura mala, callback hell.
+
+  * Los promises son facilmente enlazable (encadenables), es poderoso. No maneja excepciones, sino un catch al final. Es propenso a errores si no se retorna el siguiente llamado. Requiere un pollyfill para que funcione en todos los navegadores
+
+  * Async/Await, permite usar el try/catch para manejar errores, son faciles de leer. Se debe esperar a que todo termine y requiere pollyfill
