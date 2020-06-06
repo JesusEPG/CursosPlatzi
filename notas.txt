@@ -87,3 +87,164 @@ Que se implemento en ES6 ?
         console.log(generatorHello.next().value);//Hello,
         console.log(generatorHello.next().value);//World
         console.log(generatorHello.next().value);//undefined
+
+
+Que se implemento en ES7 ?
+
+    * Array.includes:
+        // Includes (+ agregado)
+
+        let numbers = [1, 2, 3, 4, 5, 6, 7]
+
+        if (numbers.includes(7)) {
+        console.log('Encontrado ^^')
+        } else {
+        console.log('No encontrado =(')
+        }
+
+    * Operaciones exponenciales:
+
+        // ElevarPotencias (+agregado)
+
+        let base = 4
+        let exponent = 4
+        letresult = base ** exponent
+
+        console.log(result)
+
+
+Que se implemento en ES8 ?
+
+    * Object.entries y Object.values:
+
+        const data = {
+            frontend: "Oscar",
+            backend: "Isabel",
+        }
+
+        const test = Object.entries(data);
+
+        console.log(test); //[ [ 'frontend', 'Oscar' ], [ 'backend', 'Isabel' ] ]
+        //permite saber cuantas key/value tiene los objetos
+        console.log(test.length)
+
+
+        const values = Object.values(data);
+        console.log(values);//[ 'Oscar', 'Isabel' ]
+    
+    * Trailing comma en objetos: se puedo agregar coma al ultimo registro de un objeto:
+
+        const data = {
+            frontend: "Oscar",
+            backend: "Isabel",
+        }
+
+    * paddings de string para formatear:
+
+        //Util para formatear string 
+        const string = "hello";
+
+        console.log(string.padStart(7, "hi"))
+        console.log(string.padEnd(12, "----"));
+
+    * async/await
+
+
+Que se implemento en ES9 ?
+
+    * Operador de reposo: Al momento de destructurar un objeto, se puede usar el spread operator para que se asigne el resto del objeto a una variable:
+
+        const obj ={
+            name: "jesus",
+            age: 15
+        }
+
+        let {name, ...all} = obj;
+
+        console.log(name, all)
+
+    * Propagacion de objetos: spread de un objeto dentro de otro objeto
+
+    * Promise.finally: ahora las promesas tienen un evento que indica que se termino con la promesas
+
+        helloWorld()
+            .then (Response => console.log(Response))
+            .catch (error => console.log(error))
+            .finally (() => console.log('Finalizo'))
+
+    * Mejoras de regex: para acceder a los grupos de un regex:
+
+        const regexData = /([0-9]{4})-([0-9]{2})-([0-9]{2})/
+        const match = regexData.exec('2018-04-20');
+        console.log(match)
+
+        const year = match[1];
+        const month = match[2];
+        const day = match[3];
+
+
+Que se implemento en es10 ?
+
+    * array flat y flatmap:
+
+        let array = [1,2,3, [1,2, [1,2]]];
+
+        console.log(array.flat(2));
+
+        const arr = [1, 2, 3]
+        console.log(array.flatMap(value => [value, value*2]))
+
+
+        let hello = "   hello  ";
+        console.log(hello.trimStart())
+        console.log(hello.trimEnd())
+
+    * optional error binding
+
+        try {
+        
+        } catch {
+            //no hace falta recibir error en catch
+            console.log(error)
+        }
+
+    * Object.fromEntries:
+
+        //From entries
+
+        let entries = [["name", "oscar"], ["age", 25]]
+        console.log(Object.fromEntries(entries))
+    * description de un symbol:
+            
+        let mySymbol = "My Symbol";
+        let symbol = Symbol(mySymbol);
+        console.log(symbol.description);
+
+TC39
+
+    ES.next = proxima version que se dara del standard
+
+    TC39 = comite tecnico que revisa las propuestas de cambios al lenguaje
+
+    Stage 0: idea
+
+    Stage 1: proposal
+
+    Stage 2: draf
+
+    Stage 3: Candidate
+
+    Stage 4: ready
+
+
+
+
+
+
+
+
+
+
+
+
+
