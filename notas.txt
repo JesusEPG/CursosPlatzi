@@ -1,0 +1,89 @@
+ECMAScript
+    Especificacion del lenguaje javascript establecido por ECMA que se encarga de los standards.
+    Se van agregando las utilidades an#o tras a#o desde el 2015 que es cuando se lanzo el ecmascrip6 (es6). Se lanzan en junio
+
+Que se implemento en ES6 ?
+
+    * Default params: Al definirse la funcion se pueden inicializar por defectos sus parametros:
+
+        //es6
+        function newFunction2(name = 'jesus') {
+            console.log(name);
+        }
+
+    * Concatenacion (template literal): Mediante los template literas (``) (comillas francesas) se puede tener strings con este formato:
+
+        `My name is ${name}` 
+
+    * LET y CONST: permiten declarar variables con scope de bloque
+
+    * Multilinea: Con los mismos template literal:
+
+        //Se paso de usar \n
+        let lorem = "hola que tal. \n"
+        + "soy otra linea"
+
+        //A poder presionar "Enter" dentro de los template literals
+        let lorem2 = `Hola que tal.
+        soy otra linea`
+
+    * Spread operator
+
+    * Desestructuracion:
+
+        let person = {
+            name: "Jesus",
+            edad: 32
+        }
+
+        const {name, edad} = person;
+
+    * Parametros en objetos:
+
+        let name = "Jesus";
+        let edad = 32;
+
+        const obj = {
+            name,
+            edad
+        }
+
+    * Arrow functions
+
+    * Promises
+
+    * Clases:
+        class Calculator {
+            constructor(){
+                this.valueA = 0;
+                this.valueB = 0
+            }
+
+            sum(valueA, valueB) {
+                this.valueA = valueA;
+                this.valueB = valueB;
+                return this.valueA + this.valueB;
+            }
+        }
+
+        let calc = new Calculator();
+        console.log(calc.sum(1, 2));
+
+    * Modulos: con las palabras claves de import/export
+
+    * Generadores: una funcion especial que retorna una serie de valores segun el algoritmo definido. Aplicar fibonacci
+
+        function* helloWorld() {
+            if(true) {
+                yield "Hello, "; //guarda estado de forma interna
+            }
+
+            if(true) {
+                yield "World";
+            }
+        }
+
+        const generatorHello = helloWorld();
+        console.log(generatorHello.next().value);//Hello,
+        console.log(generatorHello.next().value);//World
+        console.log(generatorHello.next().value);//undefined
