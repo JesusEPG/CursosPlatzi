@@ -21,6 +21,8 @@ module.exports = function(injectedStore) {
         if(body.id) {
             user.id = body.id;
         } else {
+            console.log("nano")
+            console.log(nanoid())
             user.id = nanoid();
         }
         if (body.password || body.username) {
@@ -40,10 +42,27 @@ module.exports = function(injectedStore) {
     function remove(id) {
         return store.remove(TABLA, id);
     }
+
+    function follow(from, to) {
+        return store.upsert(TABLA + '_follow', {
+            user_from: from,
+            user_to: to
+        });
+    }
+
+    function following(userId) {
+        const join = {};
+        join[TABLA]= 'user_to'; // {user: 'user_to'}
+        const query = {user_from: userId}
+        return store.query(TABLA + '_follow', query, join);
+    }
+
     return {
         list,
         get,
         upsert,
-        remove
+        remove,
+        follow,
+        following
     }
 }
