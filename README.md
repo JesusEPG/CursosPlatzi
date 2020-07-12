@@ -62,3 +62,6 @@ Validacion de errores:
 - Es posible manejar los errores de manera unificada, creando un middleware que se asigna luego de todas las rutas en el index del api:
 
     app.use(errors);
+
+
+//Add funciones para a#adir, leer por id, y editar posts
